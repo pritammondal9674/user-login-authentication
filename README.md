@@ -1,37 +1,39 @@
-This project is a Post and Comment Management System built using Laravel (backend) and React with Inertia.js (frontend).
-It allows users to register/login, create posts, and comment on posts.
-Admins can view, edit, and delete any post or comment, while normal users can manage only their own.
+Project Documentation
 
-The main purpose of this assignment is to show a working CRUD system with authentication, using Laravel Fortify, Inertia.js, and React TypeScript together in one full-stack setup.
+Overview
+This is a blog site made with Laravel. Users and admins can log in, write posts, and comment on posts. The login system is secure. The project shows how the backend and frontend work together.
 
+Database
+The main database tables are:
+* users: stores user details like name, email, password, and role (user or admin)
+* posts: stores blog posts with title, description, and who posted it
+* comments: stores comments with the comment text, who wrote it, and which post it is for
+Relations:
+* One user can write many posts
+* One post can have many comments
+* Each comment belongs to one user and one post
+Features Done
+* Login system for users and admins
+* After login, users and admins go to different dashboards
+* Users and admins can create, edit, view, and delete posts
+* Users see only their own posts, admins see all posts
+* Users and admins can add comments on posts
+* Can edit or delete comments
+* A confirmation popup appears before deleting a post
+Still Working On
+* Showing a success message after deleting a post or comment
+* Fixing who can delete comments (permissions)
+* Login with google/facebook
+* Adding a summary section on the admin dashboard
+How to Install and Run
 
-Login Credentials (for reference) (Database access not shared — these are sample credentials used during local testing)
-* Admin – mondalpritam152@gmail.com / 123456
-* Normal User – mondalroni151@gmail.com / 123456
-Database Architecture (used in local setup) Main tables used: users, posts, role_user, roles, comments
-Relationships:
-* One user can have many posts.
-* One post can have many comments.
-* One user can have many comments. All relationships are connected using Eloquent Models in Laravel.
-Completed Features
-1. Authentication (Laravel Fortify)
-    * Secure login system for Admin and User.
-    * Redirects to proper pages after login.
-    * Session maintained properly.
-2. Post Management
-    * Create, edit, view, and delete posts.
-    * Posts linked to their creator (user_id).
-    * Delete confirmation popup added.
-    * Admin can manage all posts.
-3. Comment System
-    * Users and admins can comment on posts.
-    * All comments shown under each post.
-    * Basic comment delete setup done.
-    * Structure ready for user-based permissions.
-Main Technical Logics
-* Laravel Fortify: Handles authentication and session management.
-* Inertia.js + React: Provides frontend rendering without page reload.
-* Component Division:
-    * Index.tsx – Displays all posts.
-    * Show.tsx – Shows a single post with comments.
-    * Comments.tsx – Handles adding and deleting comments.
+1. Clone the project: git clone [user-login-authentication]
+2. Go to the project folder: cd user-login-authentication (Whatever project name)
+3. Install PHP dependencies: composer install
+4. Install JavaScript dependencies: npm install
+5. Setup environment file: Copy the .env.example file and name it .env Then update your database name, username, and password inside the .env file
+6. Run database migrations: php artisan migrate
+7. Start the development server: php artisan serve
+Note
+(Used LARAVEL v12.35 and php 8.4)
+The database login details are not included for security. You can create your own test data after running the migrations. All the main code is available on GitHub.
